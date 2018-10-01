@@ -43,6 +43,19 @@ class LinkList {
             currentNode.next = null
         }
     }
+    reverse() {
+        if (this.head.next) {
+            let previousNode = this.head
+            let currentNode = this.head.next
+            while (currentNode) {
+                let tempNode = currentNode.next
+                currentNode.next = previousNode
+                previousNode = currentNode
+                currentNode = tempNode
+            }
+            this.head.next = null
+        }
+    }
     display() {
         let currentNode = this.head
         while (currentNode.next !== null) {
