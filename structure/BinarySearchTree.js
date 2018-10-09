@@ -78,5 +78,18 @@ class BST {
             console.log(node.data)
         }
     }
-
+    findMin(){
+        let currentNode = this.root
+        while(currentNode.leftNode){
+            currentNode = currentNode.leftNode
+        }
+        return currentNode.data
+    }
+    findMax(){
+        let currentNode = this.root
+        while(currentNode.rightNode){
+            currentNode = currentNode.rightNode
+        }
+        return currentNode.data
+    }
 }
