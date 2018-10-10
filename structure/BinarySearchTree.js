@@ -47,36 +47,45 @@ class BST {
     /**
      * 前序遍历
      * @param {BstNode} node 
+     * @returns {Array}
      */
     DLR(node = this.root) {
+        let result = []
         if (node) {
-            console.log(node.data)
+            result.push(node.data)
             this.DLR(node.leftNode)
             this.DLR(node.rightNode)
         }
+        return result
     }
     /**
      * 中序遍历
      * 对于二叉排序树而言，中序遍历就是排序算法
      * @param {BstNode} node 
+     * @returns {Array}
      */
     LDR(node = this.root) {
+        let result = []
         if (node) {
             this.LDR(node.leftNode)
-            console.log(node.data)
+            result.push(node.data)
             this.LDR(node.rightNode)
         }
+        return result
     }
     /**
      * 后序遍历
      * @param {BstNode} node 
+     * @returns {Array}
      */
     LRD(node = this.root) {
+        let result = []
         if (node) {
             this.LRD(node.leftNode)
             this.LRD(node.rightNode)
-            console.log(node.data)
+            result.push(node.data)
         }
+        return result
     }
     findMin(){
         let currentNode = this.root
