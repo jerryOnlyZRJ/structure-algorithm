@@ -43,6 +43,9 @@ class LinkList {
             currentNode.next = null
         }
     }
+    /**
+     * 链表反转
+     */
     reverse() {
         if (this.head.next) {
             let previousNode = this.head

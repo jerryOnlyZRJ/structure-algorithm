@@ -73,7 +73,6 @@ class Graph {
      * @param {Number} end 
      */
     pathTo(start, end) {
-        let source = start
         let path = []
         if (!this.hasPathTo(end)) {
             for (i = end; i != start; i = this.edgeTo(i)) {
