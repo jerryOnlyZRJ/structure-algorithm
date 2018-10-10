@@ -1,9 +1,13 @@
+/**
+ * 无权重树
+ */
 class Graph {
     constructor(vertices) {
         this.vertices = vertices
         this.edges = 0
         this.adjacency = []
         this.queue = []
+        this.edgeTo = []
         this.marked = new Set()
         for (let i = 0; i < vertices; i++) {
             this.adjacency[i] = []
@@ -44,15 +48,41 @@ class Graph {
         let queue = []
         this.marked.add(start)
         queue.push(start)
-        while(queue.length > 0){
+        while (queue.length > 0) {
             let ele = queue.shift()
             console.log(`${ele}已经被访问。`)
-            for(let item of this.adjacency(ele)){
-                if(!this.marked.has(item)){
+            for (let item of this.adjacency(ele)) {
+                if (!this.marked.has(item)) {
                     this.marked.add(item)
+                    this.edgeTo[item] = ele
                     queue.push(item)
                 }
             }
+        }
+    }
+    /**
+     * 判断是否有到达end点的路径
+     * @param {Number} end 结束点 
+     */
+    hasPathTo(end) {
+        return this.marked.has(end)
+    }
+    /**
+     * 计算两点之间的最短路径
+     * @param {Number} start 
+     * @param {Number} end 
+     */
+    pathTo(start, end) {
+        let source = start
+        let path = []
+        if (!this.hasPathTo(end)) {
+            for (i = end; i != start; i = this.edgeTo(i)) {
+                path.push(i)
+            }
+            path.push(start)
+            console.log("最短路径为：", path.join("->"))
+        } else {
+            return null
         }
     }
 }
